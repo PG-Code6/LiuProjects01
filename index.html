@@ -1,0 +1,747 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>项目帮助文档</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1引言">1、引言</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#11-编写目的">1.1 编写目的</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-说明">1.2 说明</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#13-定义">1.3 定义</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#14-参考资料">1.4 参考资料</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2软件描述">2、软件描述</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21-软件的结构">2.1 软件的结构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22-程序与数据表">2.2 程序与数据表</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3安装与初始化">3、安装与初始化</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#31-服务器安装环境">3.1 服务器安装环境</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#32-安装步骤">3.2 安装步骤</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4用途">4、用途</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#41-功能">4.1 功能</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#42-性能">4.2 性能</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#421-精度">4.2.1 精度</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#422-时间特性">4.2.2 时间特性</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#423-灵活性">4.2.3 灵活性</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#43-安全保密">4.3 安全保密</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5客户端运行环境">5、客户端运行环境</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#51-硬件设备">5.1 硬件设备</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#52-支持软件">5.2 支持软件</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#53-数据结构">5.3 数据结构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#54-数据项状态图">5.4 数据项状态图</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6使用说明">6、使用说明</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#61-系统的干系人角色">6.1 系统的干系人角色</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#611-普通职员">6.1.1 普通职员</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#612-管理员">6.1.2 管理员</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#613-系统管理员">6.1.3 系统管理员</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#62-业务总流程">6.2 业务总流程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#63-普通职员的操作">6.3 普通职员的操作</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#631-登录系统">6.3.1 登录系统</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#632-修改密码">6.3.2 修改密码</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#632-填报档案信息">6.3.2 填报档案信息</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#64-管理员的操作">6.4 管理员的操作</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#641-登录">6.4.1 登录</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#642-管理用户">6.4.2 管理用户</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#643-管理角色">6.4.3 管理角色</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#644-管理部门">6.4.4 管理部门</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#645-管理档案">6.4.5 管理档案</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='1引言'><span>1、引言</span></h1><h2 id='11-编写目的'><span>1.1 编写目的</span></h2><p><span>本文档主要介绍&quot;娄底市中心医院专业人员技术档案管理系统&quot;的基本功能、及其安装与使用步骤，作为用户使用该系统的参考。预期的读者为娄底市中心医院全体专业技术人员和人事档案管理人员。为便于说明，下文中将该系统简称为&quot;档案管理系统&quot;。</span></p><h2 id='12-说明'><span>1.2 说明</span></h2><p><span>这份操作手册所描述的软件系统的名称为&quot;娄底市中心医院专业人员技术档案管理系统&quot;。</span></p><p><span>该软件项目的任务提出者：娄底市中心医院；</span></p><p><span>开发者：湖南人文科技学院信息学院&quot;档案管理系统&quot;项目组；</span></p><p><span>用户：娄底市中心医院；</span></p><p><span>首批用户：娄底市中心医院。</span></p><p><strong><span>特别说明</span></strong><span>：因&quot;档案管理系统&quot;可能更新频繁，本文档也许没有及时更新，请使用时以您所使用的软件系统版本为准，该文档仅作参考。</span></p><h2 id='13-定义'><span>1.3 定义</span></h2><p><span>档案管理系统：&quot;娄底市中心医院专业人员技术档案管理系统&quot;的简称。</span></p><p><span>档案类别，包括但不限于以下：基本信息、教育情况、主要工作经历、执业情况、专业资格证书、其他资格证书、专业技术职称晋升、手术资质、专科技术操作资质、大型设备操作资质、药品处方权、会诊资质、专业学会任职、荣誉称号、医疗安全行为记录、医疗活动记录、业务定期考核、进修培训记录、继续教育学分获得、个人论文、个人著作、个人专利、科研项目、新项目和新技术进展记录、红包退还等记录、处分记录、投诉记录。</span></p><p><span>不同档案类别包含的内容不同，这里从略。</span></p><h2 id='14-参考资料'><span>1.4 参考资料</span></h2><p><span>原始档案材料模板一份。</span></p><h1 id='2软件描述'><span>2、软件描述</span></h1><h2 id='21-软件的结构'><span>2.1 软件的结构</span></h2><p><span>结合软件系统所具有的功能包括输入、处理和输出提供该软件的总体结构图表。</span></p><p><span>本系统为BS结构的系统。使用了前后端分离、单一页面技术等。</span></p><p><span>Server端使用Windows 2012 + Sql Server 2008R2 + IIS 8。</span></p><p><span>Browser端需要使用较新的浏览器版本，建议Chrome120+。</span></p><h2 id='22-程序与数据表'><span>2.2 程序与数据表</span></h2><p><span>数据库名称：</span></p><p><span>personnel；</span></p><p><span>核心业务数据表：</span></p><p><span>tDepartments</span></p><p><span>tPersons</span></p><p><span>tArchiveTypes</span></p><p><span>tArchives</span></p><p><span>tArchiveReviewLogs</span></p><p><span>主要业务组件：</span></p><p><span>log4net.dll</span></p><p><span>lyj.Common.dll</span></p><p><span>lyj.DBUtility.dll</span></p><p><span>lyj.Utility.dll</span></p><p><span>lyj.WebUtility.dll</span></p><p><span>Microsoft.Office.Interop.Excel.dll</span></p><p><span>MySql.Data.dll</span></p><p><span>Newtonsoft.Json.dll</span></p><p><span>Oracle.ManagedDataAccess.dll</span></p><p><span>WebSite。</span></p><h1 id='3安装与初始化'><span>3、安装与初始化</span></h1><h2 id='31-服务器安装环境'><span>3.1 服务器安装环境</span></h2><p><span>操作系统：Windows 2012；</span></p><p><span>数据库软件：Sql Server 2008R2；</span></p><p><span>链接服务器：Microsoft.ACE.OLEDB.12.0；</span></p><p><span>Web服务：IIS 8；</span></p><p><span>dotNet：4.5+。</span></p><h2 id='32-安装步骤'><span>3.2 安装步骤</span></h2><p><span>安装OS；</span></p><p><span>安装dotNet3.5；</span></p><p><span>安装Sql Server；</span></p><p><span>安装ACE引擎；</span></p><p><span>安装IIS；</span></p><p><span>安装dotNet4.6；</span></p><p><span>初始化数据库，配置权限；</span></p><p><span>部署网站；</span></p><p><span>配置文件夹权限；</span></p><p><span>测试首页、以及功能页面。</span></p><h1 id='4用途'><span>4、用途</span></h1><h2 id='41-功能'><span>4.1 功能</span></h2><p><span>&quot;档案管理系统&quot;的主要功能有：</span></p><p><span>（1）在职员工通过系统填写、提交个人档案的各类基本信息；</span></p><p><span>（2）职能部门管理员对相关内容进行复核；</span></p><p><span>（3）复核通过的信息可以形成档案打印用稿；</span></p><p><span>（4）同时，填写、提交、复核过程中可以实时统计到全院的填写进度和各个科室的填写情况，便于人才管理。</span></p><h2 id='42-性能'><span>4.2 性能</span></h2><h3 id='421-精度'><span>4.2.1 精度</span></h3><p><span>原始数据没有具体精度要求，日期相关的有年、年月、年月日等三种情况。</span></p><h3 id='422-时间特性'><span>4.2.2 时间特性</span></h3><p><span>在局域网中大部分页面相应时间小于500毫秒，少部分部分操作需要约2000毫秒，极少数操作会超过2000毫秒。</span></p><h3 id='423-灵活性'><span>4.2.3 灵活性</span></h3><p><span>本系统的权限可以自由配置，评估方式可以配置，指标体系可以自由定义，支持各种数据比较方式的选择。</span></p><h2 id='43-安全保密'><span>4.3 安全保密</span></h2><p><span>通过系统的权限管理、数据加密等方式保证数据的安全性。</span></p><h1 id='5客户端运行环境'><span>5、客户端运行环境</span></h1><p><span>本章特指浏览器客户端运行环境要求。</span></p><h2 id='51-硬件设备'><span>5.1 硬件设备</span></h2><p><span>最低要求：能较流畅运行Windows 7的计算机系统。</span></p><p><span>推荐配置：能流畅运行Windows 10的计算机系统。</span></p><h2 id='52-支持软件'><span>5.2 支持软件</span></h2><p><span>浏览器：IE11+ 或 Chrome 180+。</span></p><p><span>部分用户需要安装：WPS 或 Office系列支持软件。</span></p><h2 id='53-数据结构'><span>5.3 数据结构</span></h2><p><span>略。</span></p><h2 id='54-数据项状态图'><span>5.4 数据项状态图</span></h2><p><span>业务处理过程中，每个数据项的状态变化图略，状态类别如下文：</span></p><ul><li><span>档案状态处理</span></li><li><span>原始 INIT</span></li><li><span>新增 NEW</span></li><li><span>修改 UPDATED</span></li><li><span>待审 PEND</span></li><li><span>驳回 REJECT</span></li><li><span>通过 PASSED</span></li><li><span>删除 DELETED</span></li><li><span>废弃 OBSOLETE</span></li></ul><h1 id='6使用说明'><span>6、使用说明</span></h1><h2 id='61-系统的干系人角色'><span>6.1 系统的干系人角色</span></h2><h3 id='611-普通职员'><span>6.1.1 普通职员</span></h3><p><span>填报、提交个人档案信息，查看个人档案报表。</span></p><h3 id='612-管理员'><span>6.1.2 管理员</span></h3><p><span>对提交的职员档案信息进行核查、确认或驳回，统计填报情况，协助人员管理决策。</span></p><h3 id='613-系统管理员'><span>6.1.3 系统管理员</span></h3><p><span>负责整个系统的运行，主要工作是部门管理、用户管理、角色管理、权限分配等。</span></p><h2 id='62-业务总流程'><span>6.2 业务总流程</span></h2><p><span>略，基本业务模块如图 1所示。</span></p><p><img src="img\1.png" referrerpolicy="no-referrer" alt="图1"></p><div align="center"><strong>图 1 基本业务模块示意图<strong></strong></strong></div><h2 id='63-普通职员的操作'><span>6.3 普通职员的操作</span></h2><h3 id='631-登录系统'><span>6.3.1 登录系统</span></h3><p><span>简介：对&quot;档案管理系统&quot;的用户进行身份认证。</span></p><p><span>操作步骤：</span></p><p><span>在浏览器中输入&quot;档案管理系统&quot;的网址【地址为: </span><strong><a href='http://222.242.106.142:8899/' target='_blank' class='url'>http://222.242.106.142:8899/</a></strong><span>】，结果如图 2所示。输入用户名、密码和验证码，点击【登录】。</span></p><p><span>用户名：为工号，如：A0001；（注意：</span><strong><span>字母大写</span></strong><span>）</span></p><p><span>初始密码：为工号5位+身份证后2位，如：A00015X。（注意：</span><strong><span>字母大写</span></strong><span>）</span></p><p><span>请登录后自行修改。</span></p><p><span>                                                            </span><img src="img\2.png" referrerpolicy="no-referrer" alt="图2"><span>                                                                      </span></p><div align="center"><strong>图 2 登录界面<strong></strong></strong></div><h3 id='632-修改密码'><span>6.3.2 修改密码</span></h3><p><span>简介：修改当前用户的密码。</span></p><p><span>操作步骤：</span></p><p><span>点击【用户信息】、【修改密码】。如图 3所示。</span></p><p><img src="img\3.png" referrerpolicy="no-referrer" alt="图3"></p><div align="center"><strong>图 3 修改密码界面<strong></strong></strong></div><h3 id='632-填报档案信息'><span>6.3.2 填报档案信息</span></h3><p><span>简介：填写个人档案信息、提交送审个人档案信息、查看档案材料报表。</span></p><p><span>操作步骤：</span></p><p><span>点击【档案管理系统】、【个人档案信息】、【档案类别】。如图 4- 图 6等所示。</span></p><p><span>每一项填好后必须送审，每行中点击【送审】绿色的小按钮，再点击【保存】按钮即可。</span></p><p><span>注：</span><strong><span>提交送审后不可再修改，除非撤回提交，或被驳回后</span></strong><span>。</span></p><p><img src="img\4.png" referrerpolicy="no-referrer" alt="图4"></p><div align="center"><strong>图 4 进入修改个人基本信息界面<strong></strong></strong></div><p><img src="img\5.png" referrerpolicy="no-referrer" alt="图5"></p><div align="center"><strong>图 5 修改个人基本信息界面<strong></strong></strong></div><p><img src="img\6.png" referrerpolicy="no-referrer" alt="图6"></p><div align="center"><strong>图 6 点击【提交送审】按钮界面<strong></strong></strong></div><h2 id='64-管理员的操作'><span>6.4 管理员的操作</span></h2><h3 id='641-登录'><span>6.4.1 登录</span></h3><p><span>简介：使用管理员的用户名和密码登录系统。</span></p><p><span>操作步骤：</span></p><p><span>用户名和密码登录的具体操作与普通职员登录相同，点击【</span><a href='#631-登录系统'><span>查看具体操作</span></a><span>】可前往查看。与普通职员不同的是管理员点击登录后会出现一</span></p><p><span>个弹窗如图 7 ，选择管理员身份登入可对其他职员以及自己的档案进行管理，选择职员身份登入只能对自己的档案进行管理。</span></p><p><img src="img\7.png" alt="图7" style="zoom:50%;" /></p><div align="center"><strong>图 7 管理员登录界面<strong></strong></strong></div><h3 id='642-管理用户'><span>6.4.2 管理用户</span></h3><p><span>简介：</span></p><p><span>添加或删除职员账户、查找职员账户、查看最后登录时间。</span></p><p><span>操作步骤：</span></p><ol start='' ><li><p><span>点击【业务功能】主菜单的【系统安全管理】选项。</span></p></li><li><p><span>在展开的子菜单中，找到并点击【管理用户】。进入到一个专门用于管理所有职员账户的详细页面。如图 8所示。</span></p><p><img src="img\8.png" referrerpolicy="no-referrer" alt="图8"></p><div align="center"><strong>图 8 管理用户页面详情<strong></strong></strong></div></li><li><p><span>添加职员账户：点击【添加】按钮，按照提示依次输入并保存新职员的基本信息和账户信息。如图 9所示。</span></p><p><img src="img\9.png" referrerpolicy="no-referrer" alt="图9"></p><div align="center"><strong>图 9 添加职员账户<strong></strong></strong></div></li><li><p><span>删除职员账户：在用户列表中找到需要删除的职员账户，通过勾选对应记录或者点击其后的删除图标，确认无误后执行删除操作。如图 10所示。</span></p><p><img src="img\10.png" referrerpolicy="no-referrer" alt="图10"></p><div align="center"><strong>图 10 删除用户界面<strong></strong></strong></div></li><li><p><span>查看最后登录时间：在用户列表中，每个账户信息一栏通常会显示&quot;最后登录时间&quot;的字段，直接查阅即可得知该职员账户的最近登录时间。</span></p></li></ol><p><img src="img\11.png" referrerpolicy="no-referrer" alt="图11"></p><div align="center"><strong>图 11管理用户账户的操作<strong></strong></strong></div><h3 id='643-管理角色'><span>6.4.3 管理角色</span></h3><p><span>简介：</span></p><p><span>添加或删除管理员账户、编辑管理员账户信息</span></p><p><span>操作步骤：</span></p><ol start='' ><li><span>点击【业务功能】主菜单中的【系统安全管理】选项。</span></li><li><span>选择其下级菜单中的【管理角色】，如图 12所示。在这个界面中，系统管理员可以对所有角色进行维护与管理，包括对管理员账户的操作。</span></li></ol><p><img src="img\image-20240101162901980.png" referrerpolicy="no-referrer" alt="图12"></p><div align="center"><strong>图 12 管理角色的操作<strong></strong></strong></div><ol start='3' ><li><span>在【管理角色】页面，可执行以下操作：</span></li></ol><ul><li><p><span>添加管理员账户：点击【添加】按钮，按照提示填写必要的信息，并保存。如图 13所示。</span></p><p><img src="img\13.png" referrerpolicy="no-referrer" alt="图13"></p><div align="center"><strong>图 13添加账户对话框<strong></strong></strong></div></li><li><p><span>删除管理员账户：在已有的管理员账户列表中，找到需要删除的账户，点击【删除】按钮，确认无误后删除。如图 14 删除账户提示对话框所示。</span></p><p><img src="img\14.png" referrerpolicy="no-referrer" alt="图14"></p><div align="center"><strong>图 14删除账户提示对话框<strong></strong></strong></div></li><li><p><span>编辑管理员账户信息：点击最右边的按钮，打开账户详情页面，更新该账户的各项信息，完成后保存更改。</span></p></li></ul><h3 id='644-管理部门'><span>6.4.4 管理部门</span></h3><p><span>简介：</span></p><p><span>添加、删除、编辑科室部门。</span></p><p><span>操作步骤：</span></p><ol start='' ><li><span>在主界菜单栏【业务功能】中点击【档案基础数据】，点击【科室信息】子菜单。如图 15 所示。</span></li></ol><p><img src="img\15.png" referrerpolicy="no-referrer" alt="图15"></p><div align="center"><strong>图 15 部门(科室)的管理操作<strong></strong></strong></div><ol start='2' ><li><span>在【科室信息】页面，可以进行以下具体操作：</span></li></ol><ul><li><p><span>添加科室：点击【添加】按钮，按照提示填写信息，并保存新建的科室记录。如图 18所示</span></p><p><img src="img\16.png" referrerpolicy="no-referrer" alt="图16"></p><div align="center"><strong>图 16 添加科室对话框<strong></strong></strong></div></li><li><p><span>删除科室：在科室列表中，选择需要删除的科室行，点击【删除】按钮，系统会弹出确认框，仔细核对后确认删除操作。</span></p></li><li><p><span>编辑科室：在科室列表中找到需修改的科室行，点击最左边的【编辑】按钮，即可进行修改。</span></p></li></ul><h3 id='645-管理档案'><span>6.4.5 管理档案</span></h3><p><span>简介：</span></p><p><span>对职员提交的各项档案信息进行严谨的核查，执行通过或驳回操作，并支持查看详细档案内容及对职员档案信息进行必要的修改。</span></p><p><span>操作步骤：</span></p><ol start='' ><li><p><span>点击【业务功能】菜单栏中的【档案管理系统】选项。</span></p></li><li><p><span>点击【全员档案信息】子菜单，将展示当前医院内所有职员提交或修改的档案信息列表。如图 19所示。（注：</span><strong><span>提交送审后不可再修改，除非撤回提交，或被驳回后。</span></strong><span>）</span></p><p><img src="img\17.png" referrerpolicy="no-referrer" alt="图17"></p><div align="center"><strong> 图 17进入审核职员档案信息界面<strong></strong></strong></div></li><li><p><span>在【全院档案信息】页面，可以进行以下具体操作：</span></p></li></ol><ul><li><span>审核档案资料：在【全员档案信息】列表中，管理员可查看职工提交的档案明细，根据实际情况选择批准或驳回操作。</span></li><li><span>驳回档案信息：点击【驳回】按钮，通知提交者重新提交正确信息。</span></li><li><span>查看档案明细：在档案列表中，双击明细按钮可打开详细的档案信息页面。</span></li><li><span>修改职员档案信息：使用最左侧的【编辑】按钮进行修改。</span></li></ul></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
